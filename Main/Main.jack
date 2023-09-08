@@ -1,0 +1,220 @@
+class Main
+{
+    // Objasnjenje pravila igre
+    function void pravila_igre(){
+        var int nastavak;
+
+        do Output.moveCursor(5, 10);
+        do Output.printString("Kartice su postavljene u obliku matrice, odnosno");
+        do Output.moveCursor(6,10);
+        do Output.printString("prva kartica je postavljena u gornjem lijevom kutu ");
+        do Output.moveCursor(7,10);
+        do Output.printString("na indeksima (1,1). Zatim kartica desno od nje je ");
+        do Output.moveCursor(8,10);
+        do Output.printString("postavljena na (1,2), itd.");
+        do Output.moveCursor(13,20);
+        do Output.printString("Unesi '1' za nastavak: ");
+
+        let nastavak = Keyboard.readInt("");
+
+        // Pogresan unos
+        if(~(nastavak = 1)){
+            while(~(nastavak = 1)){
+                do Output.printString("Pogresan unos za nastavak. ");
+                let nastavak = Keyboard.readInt("");
+            }
+        }
+
+        do Screen.clearScreen();
+
+        do Output.moveCursor(5, 7);
+        do Output.printString("Za odabir kartica koje zelite okrenuti ce biti potrebno ");
+        do Output.moveCursor(6,7);
+        do Output.printString("unijeti broj za zeljeni red (pocevsi od 1) i unijeti "); 
+        do Output.moveCursor(7,7);
+        do Output.printString("broj za zeljeni stupac (pocevsi od 1), zatim ce se");
+        do Output.moveCursor(9,7);
+        do Output.printString("prikazati znak koji je skriven ispod kartice.");
+        do Output.moveCursor(18,26);
+        do Output.printString("Unesi '1' za nastavak: ");
+
+        let nastavak = Keyboard.readInt("");
+
+        if(~(nastavak = 1)){
+            while(~(nastavak = 1)){
+                do Output.moveCursor(21,26);
+                do Output.printString("Pogresan unos za nastavak. ");
+                let nastavak = Keyboard.readInt("");
+            }
+        }
+
+        do Screen.clearScreen();
+
+        do Output.moveCursor(5,5);
+        do Output.printString("Cilj igre je pronaci sve skrivene parove znakova.");
+        do Output.moveCursor(7,5);
+        do Output.printString("U jednom pokusaju pronalazenju parova dopusteno vam je");
+        do Output.moveCursor(8,5);
+        do Output.printString("otvoriti 2 kartice i pogledati znak ispod njih.");
+        do Output.moveCursor(10,5);
+        do Output.printString("Ukoliko su znakovi isti, njihove kartice ce se maknuti i");
+        do Output.moveCursor(11,5);
+        do Output.printString("Vi ste korak blize pobjedi. U suprotnom kartice se okrecu");
+        do Output.moveCursor(12,5);
+        do Output.printString("i znakovi ce biti ponovno skriveni.");
+        do Output.moveCursor(15,10);
+        do Output.printString("Broj pokusaja ce vam biti ogranicen s obzirom na");
+        do Output.moveCursor(16,5);
+        do Output.printString("broj kartica na ploci, tako da je moguce i izgubiti!");
+        do Output.moveCursor(18,26);
+        do Output.printString("Unesi '1' za nastavak: ");
+
+        let nastavak = Keyboard.readInt("");
+
+        if(~(nastavak = 1)){
+            while(~(nastavak = 1)){
+                do Output.moveCursor(21,26);
+                do Output.printString("Pogresan unos za nastavak. ");
+                let nastavak = Keyboard.readInt("");
+            }
+        }
+        do Screen.clearScreen();
+
+        do Output.moveCursor(8,10);
+        do Output.printString("U nastavku odaberite tezinu igre i odaberite spil");
+        do Output.moveCursor(10,10);
+        do Output.printString("karata s kojim cete igrati te pocnite s igrom.");
+        do Output.moveCursor(16,23);
+        do Output.printString("SRETNO!");
+        do Output.moveCursor(21,26);
+        do Output.printString("Unesi '1' za nastavak: ");
+
+        let nastavak = Keyboard.readInt("");
+
+        if(~(nastavak = 1)){
+            while(~(nastavak = 1)){
+                do Output.moveCursor(21,26);
+                do Output.printString("Pogresan unos za nastavak. ");
+                let nastavak = Keyboard.readInt("");
+            }
+        }
+
+        do Screen.clearScreen();
+
+        return;
+    }
+
+    function int odaberi_tezinu(int tezina_igre)
+    {
+        do Output.moveCursor(10, 15);
+        do Output.printString("Izaberi tezinu igre:");
+        do Output.moveCursor(11, 15);
+        do Output.printString("Lagano : 1");
+        do Output.moveCursor(12, 15);
+        do Output.printString("Srednje : 2");
+        do Output.moveCursor(13, 15);
+        do Output.printString("Tesko : 3");
+        do Output.moveCursor(16, 15);
+        let tezina_igre = Keyboard.readInt("Biram: ");
+        
+        do Screen.clearScreen();
+        
+        return tezina_igre;
+    }
+
+    // Odabir spila s kartama
+    function int odaberi_spil(int spil){
+        do Screen.clearScreen();
+
+        do Output.moveCursor(10, 15);
+        do Output.printString("Izaberi spil karata:");
+        do Output.moveCursor(11, 15);
+        do Output.printString("Spil 1 : 1");
+        do Output.moveCursor(12, 15);
+        do Output.printString("Spil 2 : 2");
+        do Output.moveCursor(13, 15);
+        do Output.printString("Spil 3 : 3");
+        do Output.moveCursor(16, 15);
+        let spil = Keyboard.readInt("Biram: ");
+        
+        do Screen.clearScreen();
+        
+        return spil;
+    }
+
+    function void main()
+    {
+        var Ploca tabla;
+        var int tezina_igre, spil;
+
+        do Output.moveCursor(10, 26);
+        do Output.printString("Memory game.");
+        do Sys.wait(3000);
+        do Screen.clearScreen();
+
+        // Pravila igre
+        do Main.pravila_igre();
+
+        // Odaberi tezinu igre
+        let tezina_igre = Main.odaberi_tezinu(tezina_igre);
+        
+        // Krivi unos
+        if(~(tezina_igre = 1) | ~(tezina_igre = 2) | ~(tezina_igre = 3)){
+            while(tezina_igre > 3){
+                let tezina_igre = Main.odaberi_tezinu(tezina_igre);
+            }
+        }
+
+        if(tezina_igre = 1){
+            let tabla = Ploca.tabla(2, 2);
+
+            let spil = Main.odaberi_spil(spil);
+
+            if(~(spil = 1) | ~(spil = 2) | ~(spil = 3)){
+                while(spil > 3){
+                    let spil = Main.odaberi_tezinu(spil);
+                }
+            }
+
+            do tabla.napravi_karte1(spil);
+            do tabla.nacrtaj_plocu(2, 2);
+            do tabla.play(2, 2);   
+        }
+
+        if(tezina_igre = 2){
+            let tabla = Ploca.tabla(3, 4);
+
+            let spil = Main.odaberi_spil(spil);
+
+            if(~(spil = 1) | ~(spil = 2) | ~(spil = 3)){
+                while(spil > 3){
+                    let spil = Main.odaberi_tezinu(spil);
+                }
+            }
+
+            do tabla.napravi_karte2(spil);
+            do tabla.nacrtaj_plocu(3, 4);
+            do tabla.play(3, 4);
+        }
+
+        if(tezina_igre = 3){
+            let tabla = Ploca.tabla(4, 4);
+
+            let spil = Main.odaberi_spil(spil);
+
+            if(~(spil = 1) | ~(spil = 2) | ~(spil = 3)){
+                while(spil > 3){
+                    let spil = Main.odaberi_tezinu(spil);
+                }
+            }
+
+            do tabla.napravi_karte3(spil);
+            do tabla.nacrtaj_plocu(4, 4);
+            do tabla.play(4, 4);
+        }
+
+        do tabla.destructor();
+
+        return;
+    }
+}

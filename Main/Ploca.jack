@@ -1,0 +1,434 @@
+class Ploca{
+    field Array karte;
+    static int broj_pokusaja;
+
+    // Konstruktor
+    constructor Ploca tabla(int x, int y){
+        let karte = Array.new(x*y);
+        let broj_pokusaja = 0;
+        return this;
+    }
+
+    // Destruktor
+    method void destructor(){
+        do karte.dispose();
+        return;
+    }
+
+    // Odabire dek s kojim ce igrati
+    method void napravi_karte1(int dek){
+        if(dek = 1){
+            let karte[0] = 1;
+            let karte[1] = 3;
+            let karte[2] = 1;
+            let karte[3] = 3;
+        }
+
+        if(dek = 2){
+            let karte[0] = 4;
+            let karte[1] = 4;
+            let karte[2] = 7;
+            let karte[3] = 7;
+        }
+
+        if(dek = 3){
+            let karte[0] = 6;
+            let karte[1] = 2;
+            let karte[2] = 2;
+            let karte[3] = 6;
+        }
+        return;
+    }
+
+    method void napravi_karte2(int dek){
+        if(dek = 1){
+            let karte[0] = 9;
+            let karte[1] = 6;
+            let karte[2] = 4;
+            let karte[3] = 9;
+            let karte[4] = 2;
+            let karte[5] = 5;
+            let karte[6] = 4;
+            let karte[7] = 5;
+            let karte[8] = 2;
+            let karte[9] = 6;
+            let karte[10] = 3;
+            let karte[11] = 3;
+        }
+
+        if(dek = 2){
+            let karte[0] = 5;
+            let karte[1] = 4;
+            let karte[2] = 5;
+            let karte[3] = 8;
+            let karte[4] = 2;
+            let karte[5] = 1;
+            let karte[6] = 1;
+            let karte[7] = 2;
+            let karte[8] = 6;
+            let karte[9] = 8;
+            let karte[10] = 6;
+            let karte[11] = 4;
+        }
+
+        if(dek = 3){
+            let karte[0] = 3;
+            let karte[1] = 1;
+            let karte[2] = 4;
+            let karte[3] = 3;
+            let karte[4] = 4;
+            let karte[5] = 7;
+            let karte[6] = 9;
+            let karte[7] = 1;
+            let karte[8] = 9;
+            let karte[9] = 8;
+            let karte[10] = 8;
+            let karte[11] = 7;
+        }
+        return;
+    }
+
+    method void napravi_karte3(int dek){
+        if(dek = 1){
+            let karte[0] = 1;
+            let karte[1] = 3;
+            let karte[2] = 9;
+            let karte[3] = 3;
+            let karte[4] = 6;
+            let karte[5] = 4;
+            let karte[6] = 7;
+            let karte[7] = 8;
+            let karte[8] = 9;
+            let karte[9] = 1;
+            let karte[10] = 8;
+            let karte[11] = 4;
+            let karte[12] = 6;
+            let karte[13] = 5;
+            let karte[14] = 5;
+            let karte[15] = 7;
+        }
+
+        if(dek = 2){
+            let karte[0] = 2;
+            let karte[1] = 7;
+            let karte[2] = 3;
+            let karte[3] = 9;
+            let karte[4] = 1;
+            let karte[5] = 7;
+            let karte[6] = 4;
+            let karte[7] = 1;
+            let karte[8] = 5;
+            let karte[9] = 2;
+            let karte[10] = 5;
+            let karte[11] = 9;
+            let karte[12] = 4;
+            let karte[13] = 3;
+            let karte[14] = 8;
+            let karte[15] = 8;
+        }
+
+        if(dek = 3){
+            let karte[0] = 6;
+            let karte[1] = 9;
+            let karte[2] = 7;
+            let karte[3] = 4;
+            let karte[4] = 9;
+            let karte[5] = 7;
+            let karte[6] = 6;
+            let karte[7] = 3;
+            let karte[8] = 1;
+            let karte[9] = 1;
+            let karte[10] = 4;
+            let karte[11] = 5;
+            let karte[12] = 2;
+            let karte[13] = 5;
+            let karte[14] = 2;
+            let karte[15] = 3;
+        }
+        return;
+    }
+
+    // Crta pocetnu plocu
+    method void nacrtaj_plocu(int x, int y){
+        var int i, j, povrsina;
+
+        let i = 0;
+        let povrsina = x*y;
+
+        if(povrsina = 4){
+            while(i < x){
+                let j = 0;
+
+                while(j < y){
+                    do Screen.drawRectangle(76+(j*256), 12+(i*128), 180+(j*256), 116+(i*128));
+                    let j = j+1;
+                }
+                let i = i+1;
+            }
+            do Output.moveCursor(20,29);
+            do Output.printString("POKUSAJ");
+            do Output.moveCursor(22,31);
+            do Output.printInt(broj_pokusaja);
+        }
+
+        if(povrsina = 12){
+            while(i < x){
+                let j = 0;
+
+                while(j < y){
+                    do Screen.drawRectangle(34+(j*128), 12+(i*85), 94+(j*128), 72+(i*85));
+                    let j = j+1;
+                }
+                let i = i+1;
+            }
+            do Output.moveCursor(20,29);
+            do Output.printString("POKUSAJ");
+            do Output.moveCursor(22,31);
+            do Output.printInt(broj_pokusaja);
+        }
+
+        if(povrsina = 16){
+            while(i < x){
+                let j = 0;
+
+                while(j < y){
+                    do Screen.drawRectangle(38+(j*128), 6+(i*64), 90+(j*128), 58+(i*64));
+                    let j = j+1;
+                }
+                let i = i+1;
+            }
+            do Output.moveCursor(20,29);
+            do Output.printString("POKUSAJ");
+            do Output.moveCursor(22,31);
+            do Output.printInt(broj_pokusaja);
+        }     
+
+        return;
+    }
+
+    // Crta plocu s okrenutom odabranom karticom
+    method void okrenuti_kartu(int x, int y, Array okrenuti, Array pronadene_karte, Array karte){
+        var int i, j, povrsina;
+
+        let i = 0;
+        let j = 0;
+        let povrsina = x*y;
+
+        do Screen.clearScreen();
+        do Output.moveCursor(20,29);
+        do Output.printString("POKUSAJ");
+        do Output.moveCursor(22,31);
+        do Output.printInt(broj_pokusaja);
+
+        if(povrsina = 4){
+            while(i < x){
+                let j = 0;
+
+                while(j < y){
+                    if(pronadene_karte[(i*y) + j] = 0){
+                        if(okrenuti[(i*y) + j] = 0){
+                            do Output.moveCursor(5+(i*10), 15+(j*30));
+                            do Output.printInt(karte[(i*y) + j]);
+                        }else{
+                            do Screen.drawRectangle(76+(j*256), 12+(i*128), 180+(j*256), 116+(i*128));
+                        }
+                        let j = j + 1;
+                    }else{
+                        let j = j + 1;
+                    }
+                }
+                let i = i + 1;
+            }
+        }
+
+        if(povrsina = 12){
+            while(i < x){
+                let j = 0;
+
+                while(j < y){
+                    if(pronadene_karte[(i*y) + j] = 0){
+                        if(okrenuti[(i*y) + j] = 0){
+                            do Output.moveCursor(3+(i*8), 7+(j*16));
+                            do Output.printInt(karte[(i*y) + j]);
+                        }else{
+                            do Screen.drawRectangle(34+(j*128), 12+(i*85), 94+(j*128), 72+(i*85));
+                        }
+                        let j = j + 1;                   
+                    }else{
+                        let j = j + 1;
+                    }
+                }
+                let i = i + 1;    
+            }
+        }
+
+        if(povrsina = 16){
+            while(i < x){
+                let j = 0;
+
+                while(j < y){
+                    if(pronadene_karte[(i*y) + j] = 0){
+                        if(okrenuti[(i*y) + j] = 0){
+                            do Output.moveCursor(2+(i*6), 7+(j*16));
+                            do Output.printInt(karte[(i*y) + j]);
+                        }else{
+                            do Screen.drawRectangle(38+(j*128), 6+(i*64), 90+(j*128), 58+(i*64));
+                        }
+                        let j = j + 1;                 
+                    }else{
+                        let j = j + 1;
+                    }
+                }
+                let i = i + 1;
+            }
+        }
+
+        return;
+    }
+
+    // Logika igre
+    method void play(int x, int y){
+        var int povrsina, red1, red2, stupac1, stupac2, k, pokusaj, pronadeni, pobjeda;
+        var Array okrenuti, pronadene_karte;
+
+        let povrsina = x*y;
+
+        let okrenuti = Array.new(povrsina);
+        let pronadene_karte = Array.new(povrsina);
+
+        let k = 0;
+        let pokusaj = 0;
+        let pronadeni = 0;
+        let pobjeda = 0;
+
+        // Popuniti polja odredenim vrijednostima koja ce sluziti u daljnjem funkcioniranju
+        while(k < povrsina){
+            let okrenuti[k] = 1;
+            let pronadene_karte[k] = 0;
+            let k = k+1;
+        }
+
+        // IGRA
+        while((pokusaj < povrsina) & (pronadeni < povrsina)){
+
+            // Unos reda
+            do Output.moveCursor(1, 31);
+            let red1 = Keyboard.readInt("R:");
+            let red1 = red1 - 1;
+
+            // Unos stupca
+            do Output.moveCursor(1, 31);
+            let stupac1 = Keyboard.readInt("S:");
+            let stupac1 = stupac1 - 1;
+
+            
+
+            // Provjerava valjanost unosa = karta nije pronadena, red i stupac su unutar 'ploce'
+            if((red1 > x) | (stupac1 > y) | (pronadene_karte[(red1*y) + stupac1] = 1)){
+                while((red1 > x) | (stupac1 > y) | (pronadene_karte[(red1*y) + stupac1] = 1)){
+                    do Output.moveCursor(2,31);
+                    do Output.printString("Pogresan");
+                    do Output.moveCursor(3,31);
+                    do Output.printString("unos");
+                    do Sys.wait(1000);
+
+                    do Output.moveCursor(1, 31);
+                    let red1 = Keyboard.readInt("R:");
+                    let red1 = red1 - 1;
+
+                    do Output.moveCursor(1, 31);
+                    let stupac1 = Keyboard.readInt("S:");
+                    let stupac1 = stupac1 - 1;
+                }
+            }
+            // Provjerava stanje kartica, jel skrivena 
+            if((okrenuti[(red1*y) + stupac1] = 1) & (pronadene_karte[(red1*y) + stupac1] = 0)){
+                // Oznaciti koju karticu okrenuti
+                let okrenuti[(red1*y) + stupac1] = 0;
+
+                //prosljediti funkciji da okrene karticu
+                do okrenuti_kartu(x, y, okrenuti, pronadene_karte, karte);
+
+                // Unos drugog reda
+                do Output.moveCursor(1, 31);
+                let red2 = Keyboard.readInt("R:");
+                let red2 = red2 - 1;
+
+                // Unos drugog stupca
+                do Output.moveCursor(1, 31);
+                let stupac2 = Keyboard.readInt("S:");
+                let stupac2 = stupac2 - 1;
+
+                // Provjerava valjanost unosa = karta nije pronadena, red i stupac su unutar 'ploce'
+                if((red2 > x) | (stupac2 > y) | (pronadene_karte[(red2*y) + stupac2] = 1) | (okrenuti[(red2*y) + stupac2] = 0)){
+                    while((red2 > x) | (stupac2 > y) | (pronadene_karte[(red2*y) + stupac2] = 1) | (okrenuti[(red2*y) + stupac2] = 0)){
+                        do Output.moveCursor(2,31);
+                        do Output.printString("Pogresan");
+                        do Output.moveCursor(3,31);
+                        do Output.printString("unos");
+                        do Sys.wait(1000);
+                        
+                        do Output.moveCursor(1, 31);
+                        let red2 = Keyboard.readInt("R:");
+                        let red2 = red2 - 1;
+
+                        do Output.moveCursor(1, 31);
+                        let stupac2 = Keyboard.readInt("S:");
+                        let stupac2 = stupac2 - 1;
+                    }
+                }
+
+                // Provjerava stanje kartica, jel skrivena
+                if((okrenuti[(red2*y) + stupac2] = 1) & (pronadene_karte[(red2*y) + stupac2] = 0)){
+                    
+                    // Oznaciti koju karticu okrenuti
+                    let okrenuti[(red2*y) + stupac2] = 0;
+                    // prosljediti funkciji da okrene karticu
+                    do okrenuti_kartu(x, y, okrenuti, pronadene_karte, karte);
+                    do Sys.wait(2000);
+
+                    // Provjerava cine li otkriveni elementi 'par'
+                    if(karte[(red1*y) + stupac1] = karte[(red2*y) + stupac2]){
+                        // Oznacimo ih kao pronadene
+                        let pronadene_karte[(red1*y) + stupac1] = 1;
+                        let pronadene_karte[(red2*y) + stupac2] = 1;
+
+                        // Azuriramo varijable zbog petlji i broj_pokusaja povecamo za 1
+                        let pronadeni = pronadeni + 2;
+                        let pokusaj = pokusaj + 1;
+                        let broj_pokusaja = broj_pokusaja + 1;
+
+                        do okrenuti_kartu(x, y, okrenuti, pronadene_karte, karte);
+                    }else{
+                        // Ako elementi ne cine par, ponovno cemo ih sakriti i azuriramo br pokusaja
+                        let okrenuti[(red1*y) + stupac1] = 1;
+                        let okrenuti[(red2*y) + stupac2] = 1;
+
+                        // Azurirati podatke
+                        let pokusaj = pokusaj + 1;
+                        let broj_pokusaja = broj_pokusaja + 1;
+
+                        do okrenuti_kartu(x, y, okrenuti, pronadene_karte, karte);
+                    }
+                }
+                else{
+                    do okrenuti_kartu(x, y, okrenuti, pronadene_karte, karte);
+                }
+            }else{
+                do okrenuti_kartu(x, y, okrenuti, pronadene_karte, karte);
+            }
+        }
+
+        if(pronadeni = povrsina){
+            do Screen.clearScreen();
+            do Output.moveCursor(10,26);
+            do Output.printString("POBJEDA !");
+        }else{
+            do Screen.clearScreen();
+            do Output.moveCursor(10,20);
+            do Output.printString("GAME OVER !");
+        }
+
+        return;
+    }
+}
